@@ -1,0 +1,22 @@
+.carousel-inner img {
+    height: 400px; /* Adjust the height to your preference */
+    object-fit: cover; /* This ensures the image covers the entire space while maintaining its aspect ratio */
+}
+
+.card img {
+    height: 200px;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.background-dark{
+    color: white;
+    background-color: rgb(50, 49, 49)
+}
+
+.card-mod{
+    background-color: rgb(58, 55, 55);
+    color: white;
+}
