@@ -1,43 +1,53 @@
+// for routing
 const express = require("express");
 const router = express.Router();
-// const {search} = require("./controller/search")
+
+// for the schema
 const Post = require("../models/post");
 const User = require("../models/user");
+
+
 const _ = require("lodash")
+
 
 router.get("/", function (req, res) {
     Post.find({}).then(function (result) {
         if (result.length === 0) {
             console.log("No posts are present!")
-            res.render("home", {})
+            res.render("home", {authenticated: req.isAuthenticated()})     // it returns true if the user is authenticated.
         } else {
-            res.render("home", { posts: result })
+            res.render("home", { posts: result, authenticated: req.isAuthenticated()})
         }
     })
 })
 
 router.get("/about", function (req, res) {
-    res.render("about", {})
+    res.render("about", {authenticated: req.isAuthenticated()})
 })
 
 router.get("/contact", function (req, res) {
-    res.render("contact", {})
+    res.render("contact", {authenticated: req.isAuthenticated()})
 })
 
 router.get("/compose", function (req, res) {
+    if (req.isAuthenticated()){
+        res.render("compose",{authenticated: req.isAuthenticated()});
+      } else {
+        res.redirect("/login");
+      }
     res.render("compose", {})
 })
 
 router.get("/diaries", function (req, res) {
-    res.render("diary", {})
+    res.render("diary", {authenticated: req.isAuthenticated()})
 })
 
 router.get("/login", function (req, res) {
-    res.render("login", {})
+    res.render("login", {authenticated: req.isAuthenticated()})
 })
 
 router.get("/signup", function (req, res) {
-    res.render("signup", {})
+    res.render("signup", {authenticated: req.isAuthenticated()})
 })
 
 
@@ -46,9 +56,9 @@ router.get("/posts/:postID", function (req, res) {
 
     Post.findOne({ _id: reqId }).then(function (result) {
         if (result) {
-            res.render("diary", { post: result, notFoundMessage: " " })
+            res.render("diary", { post: result, notFoundMessage: " ", authenticated: req.isAuthenticated()})
         } else {
-            res.render("diary", { notFoundMessage: "No results found" })
+            res.render("diary", { notFoundMessage: "No results found" , authenticated: req.isAuthenticated()})
         }
     })
 })
