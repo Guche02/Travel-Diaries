@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const _ = require("lodash")
 
 // requiring the schema.
 const Post = require("../models/post");
@@ -19,10 +20,10 @@ router.post("/login", function(req,res){
     
 })
 
+// composing new articles.
 router.post("/compose", function(req,res){
-    console.log(req.body)
     const post = new Post({
-        title: req.body.title,
+        title: _.capitalize(req.body.title),
         content: req.body.content
     })
     post.save();

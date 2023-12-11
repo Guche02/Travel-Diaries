@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 //For connection
-const {mongooseConnect} = require("./controller/connect")
+const {mongooseConnect} = require("./server/controller/connect")
 mongooseConnect("mongodb://127.0.0.1:27017/TravelDB")
 
 // view engine
@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 
 // refer to the main_routes file for any / requests.
-app.use("/", require("./routes/main_routes"))
-app.use("/", require("./routes/user_routes"))
+app.use("/", require("./server/routes/main_routes"))
+app.use("/", require("./server/routes/user_routes"))
 
 
 app.listen(3000, function(req,res){
@@ -27,8 +27,7 @@ app.listen(3000, function(req,res){
 })
 
 
-// Task for tommorow:
-// 1. Add compose feature. DONE!
-// 2. Display it on the home page. DONE!
-// 3. Add search and read More Feature.
-// 4. Associate it with a user.
+// Tasks left:
+// 1. Complete Authentication.
+// 2. Associate the posts with their users.
+// 
