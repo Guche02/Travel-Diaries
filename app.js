@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 // establishing a session and configuring the basics.
-const session = require("express-session") 
+const session = require("express-session")
 const passport = require("passport")
 
 app.use(session({
@@ -19,7 +19,7 @@ app.use(passport.session());     //use passport to initialize the session.
 
 
 //For connection
-const {mongooseConnect} = require("./server/controller/connect")
+const { mongooseConnect } = require("./server/controller/connect")
 mongooseConnect("mongodb://127.0.0.1:27017/TravelDB")
 
 // view engine
@@ -32,18 +32,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // for serving the images and css files
 app.use(express.static("./public"));
+app.use(express.static("./uploads"));
+
 
 // refer to the main_routes file for any / requests.
 app.use("/", require("./server/routes/main_routes"))
 app.use("/", require("./server/routes/user_routes"))
 
 
-app.listen(3000, function(req,res){
-    console.log("Server listening at port 3000.")
+app.listen(3000, function (req, res) {
+  console.log("Server listening at port 3000.")
 })
 
 
 // Tasks left:
-// 1. Add image.
 // 2. Associate the posts with users, add username to each post.
 

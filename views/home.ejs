@@ -75,7 +75,7 @@
                     <% posts.forEach(function(post) { %>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="/images/Taudaha.jpg" alt="">
+                            <img src="/<%=post.image%>" alt="">
                             <div class="card-body">
                                 <h3 class="card-text"><%=post.title %></h3>
                                     <p class="card-text"><%=post.content.substring(0,100)%>...</p>

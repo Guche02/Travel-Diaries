@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
 
+// for uploading images.
+const upload = require('../controller/upload');
+
 // requiring the schema.
 const Post = require("../models/post");
 const User = require("../models/user");
@@ -50,16 +53,25 @@ router.post("/login", function(req,res){
       })
 })
 
-// composing new articles.
-router.post("/compose", function(req,res){
+// for composing the posts
+router.post("/compose", upload.single("image"), function (req, res) {
+  console.log(req.body);
+  console.log(req.file);
 
-    const post = new Post({
-        title: _.capitalize(req.body.title),
-        content: req.body.content
-    })
-    post.save();
-    res.redirect("/")
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content,
+    image: req.file.filename
+  })
+
+  //to check if the file is saved correctly.
+  post.save().then(function(){
+    console.log("Successfully saved!")
+    console.log(post.image)
+  })
+  res.redirect("/")
 })
+
 
 // for logging out.
 router.get("/logout", function(req,res){

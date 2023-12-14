@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
     Post.find({}).then(function (result) {
         if (result.length === 0) {
             console.log("No posts are present!")
-            res.render("home", {authenticated: req.isAuthenticated()})     // it returns true if the user is authenticated.
+            res.render("home", {posts: [], authenticated: req.isAuthenticated()})     // it returns true if the user is authenticated.
         } else {
             res.render("home", { posts: result, authenticated: req.isAuthenticated()})
         }
@@ -31,11 +31,10 @@ router.get("/contact", function (req, res) {
 
 router.get("/compose", function (req, res) {
     if (req.isAuthenticated()){
-        res.render("compose",{authenticated: req.isAuthenticated()});
+        res.render("compose", {authenticated: req.isAuthenticated()});
       } else {
         res.redirect("/login");
       }
-    res.render("compose", {})
 })
 
 router.get("/diaries", function (req, res) {
