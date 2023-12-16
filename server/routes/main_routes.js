@@ -25,9 +25,6 @@ router.get("/about", function (req, res) {
     res.render("about", {authenticated: req.isAuthenticated()})
 })
 
-router.get("/contact", function (req, res) {
-    res.render("contact", {authenticated: req.isAuthenticated()})
-})
 
 router.get("/compose", function (req, res) {
     if (req.isAuthenticated()){
@@ -68,7 +65,7 @@ router.post("/search", function(req,res){
     if(result){
         res.redirect("/posts/" + result._id)
     } else {
-        res.render("diary", {notFoundMessage: "No result were found!", post: NaN})
+        res.render("diary", {notFoundMessage: "No result were found!", post: NaN, authenticated: req.isAuthenticated()})
     }
    })
 })

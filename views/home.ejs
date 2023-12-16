@@ -50,7 +50,8 @@
                             <img src="/images/Basantapur.jpg" alt="">
                             <div class="card-body">
                                 <h3 class="card-text">Basantapur</h3>
-                                <p class="card-text">This is an example of how the home page looks after you add your content.</p>
+                                <p class="card-text">This is an example of how the home page looks after you add your
+                                    content.</p>
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,8 @@
                             <img src="/images/Shivapuri.jpg" alt="">
                             <div class="card-body">
                                 <h3 class="card-text">Shivapuri</h3>
-                                <p class="card-text">This is an example of how the home page looks after you add your content.</p>
+                                <p class="card-text">This is an example of how the home page looks after you add your
+                                    content.</p>
                             </div>
                         </div>
                     </div>
@@ -68,36 +70,40 @@
                             <img src="/images/Taudaha.jpg" alt="">
                             <div class="card-body">
                                 <h3 class="card-text">Taudaha</h3>
-                                <p class="card-text">This is an example of how the home page looks after you add your content.</p>
+                                <p class="card-text">This is an example of how the home page looks after you add your
+                                    content.</p>
                             </div>
                         </div>
                     </div>
                     <% posts.forEach(function(post) { %>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="/<%=post.image%>" alt="">
-                            <div class="card-body">
-                                <h3 class="card-text"><%=post.title %></h3>
-                                    <p class="card-text"><%=post.content.substring(0,100)%>...</p>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="/<%=post.image%>" alt="">
+                                <div class="card-body">
+                                    <h3 class="card-text">
+                                        <%=post.title %>
+                                    </h3>
+                                    <p class="card-text">
+                                        <%=post.content.substring(0,100)%>...
+                                    </p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="/posts/<%= post._id %>" class="btn btn-sm btn-outline-secondary">View</a>
+                                        <a href="/posts/<%= post._id %>"
+                                            class="btn btn-sm btn-outline-secondary">View</a>
                                         <small class="text-body-secondary">9 mins</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <main class="flex-shrink-0">
-                        <div class="container">
-                            <h1 class="mt-5">Travel Diaries</h1>
-                            <p class="lead">Want to add your own travel diary?</p>
-                            <a href="/compose" class="btn btn-outline-dark">Add now!</a>
-                        </div>
-                    </main>
+    <div class="container">
+        <h1 class="mt-5">Travel Diaries</h1>
+        <p class="lead">Want to add your own travel diary?</p>
+        <a href="/compose" class="btn btn-outline-dark">Add now!</a>
+    </div>
 
-
-                    </body>
-
-
-<%- include("partials/footer") -%>
+    <%- include("partials/footer") -%>

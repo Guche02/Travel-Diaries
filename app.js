@@ -45,6 +45,8 @@ app.listen(3000, function (req, res) {
 })
 
 
-// Tasks left:
-// 2. Associate the posts with users, add username to each post.
+// Tasks to do:
+// 
+
+
 
