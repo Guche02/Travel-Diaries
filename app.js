@@ -46,7 +46,7 @@ app.listen(3000, function (req, res) {
 
 
 // Tasks to do:
-// 
+// associate the posts with user.
 
 
 
